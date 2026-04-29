@@ -16,14 +16,14 @@ const ABOUT_LINKS = [
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
+      <div className="mx-auto max-w-[1440px] px-6 lg:px-10 py-14 md:py-16">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4">
           {/* Col 1: Brand */}
           <div>
-            <p className="font-display font-extrabold uppercase text-lg text-white mb-4">
-              NETAJI YOUTH
+            <p className="font-display font-bold tracking-tight text-[15px] text-white mb-3">
+              Netaji Youth
             </p>
-            <p className="font-body text-sm text-neutral-400 leading-relaxed">
+            <p className="font-body text-[13px] text-neutral-500 leading-relaxed">
               Empowering rural children in Tamil Nadu through sports, fitness,
               and structured discipline.
             </p>
@@ -31,15 +31,15 @@ export default function Footer() {
 
           {/* Col 2: Initiatives */}
           <div>
-            <p className="font-display font-bold uppercase text-xs tracking-widest text-white mb-5">
-              INITIATIVES
+            <p className="font-display font-semibold text-[12px] tracking-wide text-neutral-400 mb-4">
+              Initiatives
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {INITIATIVES.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="font-body text-sm text-neutral-400 hover:text-white transition-colors"
+                    className="font-body text-[13px] text-neutral-500 hover:text-white transition-colors"
                   >
                     {label}
                   </Link>
@@ -50,15 +50,15 @@ export default function Footer() {
 
           {/* Col 3: About Us */}
           <div>
-            <p className="font-display font-bold uppercase text-xs tracking-widest text-white mb-5">
-              ABOUT US
+            <p className="font-display font-semibold text-[12px] tracking-wide text-neutral-400 mb-4">
+              About Us
             </p>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {ABOUT_LINKS.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="font-body text-sm text-neutral-400 hover:text-white transition-colors"
+                    className="font-body text-[13px] text-neutral-500 hover:text-white transition-colors"
                   >
                     {label}
                   </Link>
@@ -68,15 +68,15 @@ export default function Footer() {
           </div>
 
           {/* Col 4: CTA + copyright */}
-          <div className="flex flex-col justify-between gap-8">
+          <div className="flex flex-col justify-between gap-6">
             <Link
               href="/register"
-              className="inline-flex items-center justify-center rounded-full border-2 border-white px-6 py-3 font-display font-bold text-sm uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors"
+              className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-2.5 font-display font-semibold text-[12px] tracking-wide text-white hover:bg-white hover:text-black transition-colors"
             >
-              REGISTER A CHILD →
+              Register a Child
             </Link>
-            <p className="font-body text-xs text-neutral-500 leading-relaxed">
-              © 2026 Netaji Youth Foundation.
+            <p className="font-body text-[11px] text-neutral-600 leading-relaxed">
+              &copy; 2026 Netaji Youth Foundation.
               <br />
               All Rights Reserved.
             </p>

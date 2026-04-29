@@ -20,9 +20,9 @@ export default function FormCheckbox({
         id={inputId}
         type="checkbox"
         {...rest}
-        className="mt-1 h-5 w-5 shrink-0 appearance-none border-2 border-black bg-white checked:bg-black checked:border-black focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 transition-colors cursor-pointer relative checked:after:content-['\2713'] checked:after:absolute checked:after:inset-0 checked:after:flex checked:after:items-center checked:after:justify-center checked:after:text-volt checked:after:text-sm checked:after:font-bold"
+        className="mt-0.5 h-4 w-4 shrink-0 appearance-none border border-neutral-300 bg-white rounded-sm checked:bg-black checked:border-black focus:outline-none focus:ring-1 focus:ring-black focus:ring-offset-1 transition-colors cursor-pointer relative checked:after:content-['\2713'] checked:after:absolute checked:after:inset-0 checked:after:flex checked:after:items-center checked:after:justify-center checked:after:text-white checked:after:text-[10px] checked:after:font-bold"
       />
-      <span className="font-body text-sm text-black leading-snug">{label}</span>
+      <span className="font-body text-[13px] text-neutral-600 leading-snug">{label}</span>
     </label>
   );
 }

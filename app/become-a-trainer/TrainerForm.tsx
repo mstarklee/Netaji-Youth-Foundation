@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import FormField from "@/components/form/FormField";
 import FormTextarea from "@/components/form/FormTextarea";
 import FormCheckboxGroup from "@/components/form/FormCheckboxGroup";
@@ -30,23 +30,19 @@ export default function TrainerForm() {
 
   if (submitted) {
     return (
-      <div className="border-4 border-black bg-volt p-10 md:p-14 shadow-[12px_12px_0_0_#111111]">
-        <CheckCircle2
-          size={48}
-          className="text-black mb-6"
-          strokeWidth={2.25}
-        />
-        <h3 className="font-display font-extrabold uppercase text-3xl md:text-4xl text-black leading-[0.95]">
+      <div className="bg-neutral-50 rounded-sm p-10 md:p-14">
+        <CheckCircle2 size={36} className="text-black mb-5" strokeWidth={1.5} />
+        <h3 className="font-display font-bold text-2xl md:text-[28px] text-black leading-tight tracking-tight">
           Application received.
         </h3>
-        <p className="mt-5 font-body text-black/80 text-lg leading-relaxed">
+        <p className="mt-4 font-body text-neutral-500 text-[15px] leading-relaxed">
           Thank you for applying to Netaji Youth Foundation. Shortlisted
           candidates will be contacted for a discussion and manual verification.
         </p>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          className="mt-8 inline-flex items-center gap-2 font-display font-bold uppercase text-xs tracking-[0.3em] text-black border-b-2 border-black pb-1 hover:text-orange hover:border-orange transition-colors"
+          className="mt-6 inline-flex items-center gap-2 font-display font-medium text-[13px] tracking-wide text-black border-b border-black pb-0.5 hover:text-neutral-500 hover:border-neutral-500 transition-colors"
         >
           Submit another application
         </button>
@@ -57,23 +53,14 @@ export default function TrainerForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-4 border-black bg-white p-8 md:p-12 shadow-[12px_12px_0_0_#FF5C00]"
+      className="bg-white border border-neutral-200 rounded-sm p-8 md:p-12"
       noValidate
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-7">
         <FormField label="Full Name" name="fullName" required />
-        <FormField
-          label="Phone Number"
-          name="phone"
-          type="tel"
-          required
-        />
+        <FormField label="Phone Number" name="phone" type="tel" required />
         <FormField label="Email" name="email" type="email" required />
-        <FormField
-          label="Village / Current Location"
-          name="village"
-          required
-        />
+        <FormField label="Village / Current Location" name="village" required />
 
         <div className="md:col-span-2">
           <FormCheckboxGroup
@@ -100,7 +87,7 @@ export default function TrainerForm() {
         <FormField
           label="Weekly Availability"
           name="weeklyAvailability"
-          placeholder="e.g., Mon–Fri evenings, weekend mornings"
+          placeholder="e.g., Mon-Fri evenings, weekend mornings"
         />
 
         <div className="md:col-span-2">
@@ -113,21 +100,18 @@ export default function TrainerForm() {
         </div>
       </div>
 
-      <div className="mt-10 pt-8 border-t-2 border-black flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-        <p className="font-body text-sm text-neutral-600 max-w-md">
+      <div className="mt-10 pt-8 border-t border-neutral-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+        <p className="font-body text-[13px] text-neutral-400 max-w-md">
           Shortlisted candidates will be contacted for a discussion and manual
           verification.
         </p>
         <button
           type="submit"
           disabled={submitting}
-          className="group inline-flex items-center justify-center gap-3 bg-black text-white px-8 py-4 font-display font-bold text-sm uppercase tracking-widest border-2 border-black hover:bg-volt hover:text-black hover:border-volt transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="group inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 font-display font-semibold text-[13px] tracking-wide hover:bg-neutral-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {submitting ? "Submitting…" : "Apply as Trainer"}
-          <ArrowUpRight
-            size={18}
-            className="group-hover:rotate-45 transition-transform"
-          />
+          {submitting ? "Submitting..." : "Apply as Trainer"}
+          <ArrowRight size={14} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
         </button>
       </div>
     </form>
