@@ -15,22 +15,22 @@ export default function FormField({
 }: Props) {
   const inputId = id ?? rest.name;
   return (
-    <div className={`flex flex-col gap-2 ${className}`}>
+    <div className={`flex flex-col gap-1.5 ${className}`}>
       <label
         htmlFor={inputId}
-        className="font-display font-bold uppercase text-[11px] tracking-[0.3em] text-black"
+        className="font-display font-medium text-[12px] tracking-wide text-neutral-500"
       >
         {label}
-        {required && <span className="text-orange ml-1">*</span>}
+        {required && <span className="text-orange ml-0.5">*</span>}
       </label>
       <input
         id={inputId}
         required={required}
         {...rest}
-        className="border-0 border-b-2 border-black bg-transparent py-3 font-body text-base text-black placeholder:text-neutral-400 focus:border-orange focus:outline-none focus:ring-0 transition-colors"
+        className="border-0 border-b border-neutral-300 bg-transparent py-2.5 font-body text-[15px] text-black placeholder:text-neutral-400 focus:border-black focus:outline-none focus:ring-0 transition-colors"
       />
       {hint && (
-        <p className="font-body text-xs text-neutral-500">{hint}</p>
+        <p className="font-body text-[11px] text-neutral-400">{hint}</p>
       )}
     </div>
   );

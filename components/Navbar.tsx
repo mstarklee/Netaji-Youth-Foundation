@@ -2,101 +2,152 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT", href: "/about" },
-  { label: "FOUNDER", href: "/founder-story" },
-  { label: "PROGRAMS", href: "/programs" },
-  { label: "IMPACT", href: "/impact" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Founder", href: "/founder-story" },
+  { label: "Programs", href: "/programs" },
+  { label: "Impact", href: "/impact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <nav className="sticky top-0 z-40 bg-white">
-        <div className="mx-auto max-w-7xl px-6 flex h-16 items-center justify-between">
+      <nav
+        className={`sticky top-0 z-40 bg-white transition-shadow duration-300 ${
+          scrolled ? "shadow-sm" : ""
+        }`}
+      >
+        <div className="mx-auto max-w-[1440px] px-6 lg:px-10 flex h-16 items-center justify-between">
+          {/* Logo */}
           <Link
             href="/"
-            className="font-display font-extrabold uppercase tracking-wide text-black text-lg"
+            className="font-display font-extrabold uppercase tracking-tight text-black text-[15px]"
           >
-            NETAJI YOUTH
+            Netaji Youth
           </Link>
 
-          <ul className="hidden md:flex items-center gap-8">
+          {/* Center nav */}
+          <ul className="hidden lg:flex items-center gap-7">
             {NAV_LINKS.map(({ label, href }) => {
               const active = pathname === href;
               return (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`font-display font-semibold text-xs uppercase tracking-widest text-black transition-colors hover:text-black/50 pb-0.5 ${
-                      active ? "border-b-2 border-black" : ""
+                    className={`relative font-display font-medium text-[13px] tracking-wide transition-colors ${
+                      active ? "text-black" : "text-neutral-500 hover:text-black"
                     }`}
                   >
                     {label}
+                    {active && (
+                      <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-black rounded-full" />
+                    )}
                   </Link>
                 </li>
               );
             })}
           </ul>
 
+          {/* Right side */}
           <div className="flex items-center gap-4">
             <Link
               href="/register"
-              className="hidden md:inline-flex items-center rounded-full bg-black px-5 py-2 text-xs font-display font-bold uppercase tracking-widest text-white hover:bg-black/80 transition-colors"
+              className="hidden lg:inline-flex items-center rounded-full bg-black px-5 py-2 text-[12px] font-display font-semibold text-white hover:bg-neutral-800 transition-colors"
             >
-              REGISTER
+              Register
             </Link>
             <button
               onClick={() => setOpen(true)}
-              className="md:hidden p-1 text-black"
+              className="lg:hidden p-1 text-black"
               aria-label="Open menu"
             >
-              <Menu size={24} />
+              <Menu size={22} strokeWidth={1.5} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile full-screen overlay */}
-      {open && (
-        <div className="fixed inset-0 z-50 bg-black flex flex-col p-8">
-          <button
-            onClick={() => setOpen(false)}
-            className="self-end text-white mb-12"
-            aria-label="Close menu"
+      {/* Mobile overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-white flex flex-col px-6 py-6"
           >
-            <X size={28} />
-          </button>
-          <ul className="flex flex-col gap-6">
-            {NAV_LINKS.map(({ label, href }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  onClick={() => setOpen(false)}
-                  className="font-display font-extrabold text-4xl uppercase text-white hover:text-volt transition-colors"
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/register"
-            onClick={() => setOpen(false)}
-            className="mt-auto inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-display font-bold uppercase tracking-widest text-black hover:bg-volt transition-colors"
-          >
-            REGISTER
-          </Link>
-        </div>
-      )}
+            {/* Mobile header */}
+            <div className="flex items-center justify-between mb-12">
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className="font-display font-extrabold uppercase tracking-tight text-black text-[15px]"
+              >
+                Netaji Youth
+              </Link>
+              <button
+                onClick={() => setOpen(false)}
+                className="text-black"
+                aria-label="Close menu"
+              >
+                <X size={22} strokeWidth={1.5} />
+              </button>
+            </div>
+
+            {/* Mobile links */}
+            <ul className="flex flex-col gap-1">
+              {NAV_LINKS.map(({ label, href }, i) => {
+                const active = pathname === href;
+                return (
+                  <motion.li
+                    key={href}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.3 }}
+                  >
+                    <Link
+                      href={href}
+                      onClick={() => setOpen(false)}
+                      className={`block py-3 font-display font-semibold text-2xl tracking-tight transition-colors ${
+                        active ? "text-black" : "text-neutral-400 hover:text-black"
+                      }`}
+                    >
+                      {label}
+                    </Link>
+                  </motion.li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-auto pb-4">
+              <Link
+                href="/register"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center rounded-full bg-black px-6 py-3.5 text-[13px] font-display font-semibold text-white hover:bg-neutral-800 transition-colors"
+              >
+                Register a Child
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -10,9 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import MarqueeBar from "@/components/MarqueeBar";
 import Reveal from "@/components/Reveal";
-import StickerBadge from "@/components/StickerBadge";
 import TrainerForm from "./TrainerForm";
 
 export const metadata: Metadata = {
@@ -58,7 +56,6 @@ export default function BecomeATrainerPage() {
         title="Lead the next"
         italicWord="generation."
         tint="orange"
-        badge="◉ Paid · Part-time"
         intro={
           <>
             <p>
@@ -68,7 +65,7 @@ export default function BecomeATrainerPage() {
             </p>
             <p>
               This is{" "}
-              <strong className="text-white font-bold">
+              <strong className="text-white font-medium">
                 not a volunteer role
               </strong>
               . We are building a reliable, community-based model with paid
@@ -78,39 +75,24 @@ export default function BecomeATrainerPage() {
         }
       />
 
-      <MarqueeBar
-        items={[
-          "PAID ROLE.",
-          "PART TIME.",
-          "RURAL FIRST.",
-          "STRUCTURED.",
-          "CONSISTENT.",
-        ]}
-        variant="orange"
-      />
-
       {/* ── Who We're Looking For ─────────────────────────────── */}
-      <section className="bg-white py-24 md:py-32 px-6">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section className="bg-white py-20 md:py-28 px-6 lg:px-10">
+        <div className="mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">
             <Reveal>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="h-px w-10 bg-orange" />
-                <span className="font-display font-bold uppercase text-xs tracking-[0.3em] text-orange">
-                  Who We&apos;re Looking For
-                </span>
-              </div>
+              <p className="font-display font-medium text-[12px] tracking-wide text-orange mb-3">
+                Who We&apos;re Looking For
+              </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-display font-extrabold text-black uppercase text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-tight">
-                Reliable. <br />
+              <h2 className="font-display font-bold text-black text-3xl md:text-4xl lg:text-[42px] leading-[1.1] tracking-tight">
+                Reliable.{" "}
                 <span className="font-hero italic text-orange">Caring.</span>{" "}
-                <br />
                 Consistent.
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-8 font-body text-neutral-600 text-lg leading-relaxed max-w-md">
+              <p className="mt-6 font-body text-neutral-500 text-[15px] leading-relaxed max-w-md">
                 We are seeking trainers who show up for children, build trust
                 with families, and help create a calm, disciplined environment.
               </p>
@@ -118,22 +100,16 @@ export default function BecomeATrainerPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {LOOKING_FOR.map((item, i) => {
                 const Icon = item.icon;
                 return (
-                  <Reveal key={item.text} delay={i * 0.06}>
-                    <li className="border-2 border-black bg-white p-5 h-full flex items-start gap-4">
-                      <span
-                        className={`inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-black ${
-                          i % 2 === 0
-                            ? "bg-volt text-black"
-                            : "bg-black text-volt"
-                        }`}
-                      >
-                        <Icon size={18} strokeWidth={2.25} />
+                  <Reveal key={item.text} delay={i * 0.05}>
+                    <li className="bg-white border border-neutral-200 rounded-sm p-5 h-full flex items-start gap-3.5">
+                      <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-100">
+                        <Icon size={16} strokeWidth={1.5} className="text-neutral-600" />
                       </span>
-                      <span className="font-body text-base text-black leading-snug pt-1">
+                      <span className="font-body text-[15px] text-black leading-snug pt-1.5">
                         {item.text}
                       </span>
                     </li>
@@ -145,40 +121,33 @@ export default function BecomeATrainerPage() {
         </div>
       </section>
 
-      <MarqueeBar
-        items={["TRAIN.", "GUIDE.", "PROTECT.", "INSPIRE.", "REPEAT."]}
-        variant="black"
-        reverse
-        speed={28}
-      />
-
       {/* ── Role Areas + Expectations ─────────────────────────── */}
-      <section className="bg-gray-50 py-24 md:py-32 px-6">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+      <section className="bg-neutral-50 py-20 md:py-28 px-6 lg:px-10">
+        <div className="mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Role areas */}
-          <div className="border-4 border-black bg-volt p-8 md:p-10 shadow-[10px_10px_0_0_#111111]">
+          <div className="bg-white border border-neutral-200 rounded-sm p-7 md:p-9">
             <Reveal>
-              <p className="font-display font-bold uppercase text-[11px] tracking-[0.3em] text-black">
+              <p className="font-display font-medium text-[12px] tracking-wide text-neutral-400 mb-1.5">
                 Trainer Role Areas
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <h3 className="mt-3 font-display font-extrabold uppercase text-3xl md:text-4xl text-black leading-[0.95] tracking-tight">
-                Where you might <br />
+              <h3 className="font-display font-bold text-2xl md:text-[28px] text-black leading-tight tracking-tight">
+                Where you might{" "}
                 <span className="font-hero italic">work.</span>
               </h3>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-5 font-body text-black/80 text-base leading-relaxed">
+              <p className="mt-4 font-body text-neutral-500 text-[15px] leading-relaxed">
                 Depending on need, trainers may support:
               </p>
             </Reveal>
-            <Reveal delay={0.3}>
-              <ul className="mt-6 flex flex-wrap gap-2.5">
+            <Reveal delay={0.25}>
+              <ul className="mt-5 flex flex-wrap gap-2">
                 {ROLE_AREAS.map((area) => (
                   <li
                     key={area}
-                    className="inline-flex items-center border-2 border-black bg-white px-4 py-2 font-display font-bold uppercase text-xs tracking-widest text-black"
+                    className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-3.5 py-1.5 font-display font-medium text-[11px] tracking-wide text-neutral-600"
                   >
                     {area}
                   </li>
@@ -188,28 +157,28 @@ export default function BecomeATrainerPage() {
           </div>
 
           {/* Expectations */}
-          <div className="border-4 border-black bg-black text-white p-8 md:p-10 shadow-[10px_10px_0_0_#FF5C00]">
+          <div className="bg-black text-white rounded-sm p-7 md:p-9">
             <Reveal>
-              <p className="font-display font-bold uppercase text-[11px] tracking-[0.3em] text-volt">
+              <p className="font-display font-medium text-[12px] tracking-wide text-volt mb-1.5">
                 Trainer Expectations
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <h3 className="mt-3 font-display font-extrabold uppercase text-3xl md:text-4xl text-white leading-[0.95] tracking-tight">
-                What we ask <br />
+              <h3 className="font-display font-bold text-2xl md:text-[28px] text-white leading-tight tracking-tight">
+                What we ask{" "}
                 <span className="font-hero italic text-volt">of you.</span>
               </h3>
             </Reveal>
             <Reveal delay={0.2}>
-              <ul className="mt-8 space-y-4">
+              <ul className="mt-6 space-y-3">
                 {EXPECTATIONS.map((exp) => (
                   <li
                     key={exp}
-                    className="flex items-start gap-3 font-body text-white/85 text-base leading-snug"
+                    className="flex items-start gap-2.5 font-body text-white/70 text-[15px] leading-snug"
                   >
                     <CheckCircle2
-                      size={20}
-                      strokeWidth={2.25}
+                      size={16}
+                      strokeWidth={1.5}
                       className="text-volt shrink-0 mt-0.5"
                     />
                     <span>{exp}</span>
@@ -222,33 +191,30 @@ export default function BecomeATrainerPage() {
       </section>
 
       {/* ── Application Form ──────────────────────────────────── */}
-      <section className="bg-white py-24 md:py-32 px-6">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <section className="bg-white py-20 md:py-28 px-6 lg:px-10">
+        <div className="mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <aside className="lg:col-span-4">
-            <div className="lg:sticky lg:top-24 space-y-8">
+            <div className="lg:sticky lg:top-24 space-y-6">
               <Reveal>
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="h-px w-10 bg-black" />
-                  <span className="font-display font-bold uppercase text-xs tracking-[0.3em] text-black">
-                    Application
-                  </span>
-                </div>
+                <p className="font-display font-medium text-[12px] tracking-wide text-neutral-400 mb-3">
+                  Application
+                </p>
               </Reveal>
               <Reveal delay={0.05}>
-                <h2 className="font-display font-extrabold uppercase text-black text-4xl md:text-5xl leading-[0.95] tracking-tight">
-                  Apply as a <br />
+                <h2 className="font-display font-bold text-black text-3xl md:text-4xl leading-[1.1] tracking-tight">
+                  Apply as a{" "}
                   <span className="font-hero italic text-orange">trainer.</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.15}>
-                <p className="font-body text-neutral-600 text-base leading-relaxed max-w-sm">
+                <p className="font-body text-neutral-500 text-[15px] leading-relaxed max-w-sm">
                   Tell us about yourself, your background, and what draws you to
                   the work we do with rural children.
                 </p>
               </Reveal>
 
-              <Reveal rotate={-3}>
-                <div className="relative aspect-[4/5] w-full max-w-xs border-4 border-black overflow-hidden shadow-[10px_10px_0_0_#D7F61D] bg-neutral-900">
+              <Reveal delay={0.2}>
+                <div className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-sm bg-neutral-900">
                   <Image
                     src="/images/focus/leadership.png"
                     alt="Trainers guiding rural children"
@@ -256,11 +222,6 @@ export default function BecomeATrainerPage() {
                     className="object-cover"
                     sizes="(max-width: 1024px) 90vw, 30vw"
                   />
-                  <div className="absolute bottom-4 left-4 z-10">
-                    <StickerBadge variant="orange" rotate={-4} size="sm">
-                      ◉ Paid role
-                    </StickerBadge>
-                  </div>
                 </div>
               </Reveal>
             </div>

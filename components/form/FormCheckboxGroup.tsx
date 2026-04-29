@@ -24,10 +24,10 @@ export default function FormCheckboxGroup({
   };
 
   return (
-    <fieldset className="flex flex-col gap-3">
-      <legend className="font-display font-bold uppercase text-[11px] tracking-[0.3em] text-black mb-1">
+    <fieldset className="flex flex-col gap-2.5">
+      <legend className="font-display font-medium text-[12px] tracking-wide text-neutral-500 mb-1">
         {label}
-        {required && <span className="text-orange ml-1">*</span>}
+        {required && <span className="text-orange ml-0.5">*</span>}
       </legend>
       <div className="flex flex-wrap gap-2">
         {options.map((opt) => {
@@ -37,10 +37,10 @@ export default function FormCheckboxGroup({
               key={opt.value}
               type="button"
               onClick={() => toggle(opt.value)}
-              className={`inline-flex items-center font-display font-bold uppercase text-[11px] tracking-widest border-2 border-black px-4 py-2 transition-colors ${
+              className={`inline-flex items-center font-display font-medium text-[12px] tracking-wide rounded-full px-4 py-2 border transition-colors ${
                 isOn
-                  ? "bg-black text-volt"
-                  : "bg-white text-black hover:bg-volt"
+                  ? "bg-black text-white border-black"
+                  : "bg-white text-neutral-600 border-neutral-300 hover:border-black hover:text-black"
               }`}
             >
               {opt.label}
@@ -48,7 +48,6 @@ export default function FormCheckboxGroup({
           );
         })}
       </div>
-      {/* Hidden inputs so the form data still serializes if posted */}
       {selected.map((v) => (
         <input key={v} type="hidden" name={name} value={v} />
       ))}
